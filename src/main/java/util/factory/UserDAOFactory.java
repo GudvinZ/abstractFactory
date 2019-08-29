@@ -15,7 +15,7 @@ public abstract class UserDAOFactory {
     public static UserDAOFactory createFactoryByProperties() {
         Properties config = new Properties();
         try {
-            config.load(Files.newInputStream(Paths.get("D:/MyProjects/abstractFactory/src/main/resources/config.properties")));
+            config.load(UserDAOFactory.class.getClassLoader().getResourceAsStream("config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }

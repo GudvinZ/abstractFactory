@@ -22,10 +22,11 @@
 <jsp:include page="/jsp/add.jsp"/>
 <c:if test="${users.size()>0}">
     <p>
-      Users:
-    <form action="/delete/" method="get" style="display: inline">
-        <button type="submit">Delete all users</button>
-    </form>
+        <label>Users:
+            <form action="/delete/" method="get" style="display: inline">
+                <button type="submit">Delete all users</button>
+            </form>
+        </label>
     </p>
     <jsp:include page="/jsp/dynamicTableUsers.jsp"/>
 </c:if>

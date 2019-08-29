@@ -10,8 +10,8 @@ public class UserService {
     private UserDAOFactory daoFactory;
 
     public static UserService getInstance() {
-        if(instance==null)
-            instance=new UserService();
+        if (instance == null)
+            instance = new UserService();
         return instance;
     }
 
