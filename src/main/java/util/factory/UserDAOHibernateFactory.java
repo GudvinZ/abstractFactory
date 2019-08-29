@@ -19,7 +19,7 @@ public class UserDAOHibernateFactory extends UserDAOFactory {
 
     @Override
     public DAO createDAO() {
-        return new UserDAOHibernateImpl(sessionFactory.openSession());
+        return UserDAOHibernateImpl.getInstance(sessionFactory);
     }
 
     private UserDAOHibernateFactory() {

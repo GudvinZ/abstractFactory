@@ -11,15 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOJDBCImpl implements DAO {
+    private static UserDAOJDBCImpl instance;
     private Connection connection;
 
-    public UserDAOJDBCImpl(Connection connection) {
+    public static UserDAOJDBCImpl getInstance(Connection connection) {
+        if (instance == null)
+            instance = new UserDAOJDBCImpl(connection);
+        return instance;
+    }
+
+    private UserDAOJDBCImpl(Connection connection) {
         this.connection = connection;
-        try {
-            createTable();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        createTable();
     }
 
     private int execUpdate(String update, Object... parameters) {
@@ -111,11 +114,11 @@ public class UserDAOJDBCImpl implements DAO {
         );
     }
 
-    public void createTable() throws SQLException {
+    public void createTable() {
         execUpdate("create table if not exists users (id bigint auto_increment, login varchar(256), password varchar(256), name varchar(256), primary key (id))");
     }
 
-    public void dropTable() throws SQLException {
+    public void dropTable() {
         execUpdate("DROP TABLE IF EXISTS users");
     }
 }

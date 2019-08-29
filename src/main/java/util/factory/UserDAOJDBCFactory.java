@@ -19,7 +19,7 @@ public class UserDAOJDBCFactory extends UserDAOFactory {
 
     @Override
     public DAO createDAO() {
-        return new UserDAOJDBCImpl(connection);
+        return UserDAOJDBCImpl.getInstance(connection);
     }
 
     private UserDAOJDBCFactory() {
